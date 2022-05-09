@@ -193,8 +193,7 @@ class _LoginViewState extends State<LoginView> {
                                   MaterialStateProperty.all(Colors.transparent),
                             ),
                             onPressed: () {
-                              Get.toNamed('/home');
-                              // login();
+                              login();
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(

@@ -85,7 +85,7 @@ class ScanView extends GetView<ScanController> {
                                 color: Colors.white,
                               ),
                             ),
-                            color: Colors.purple.shade100,
+                            color: Colors.purple.shade300,
                           ),
                         ),
                       ),

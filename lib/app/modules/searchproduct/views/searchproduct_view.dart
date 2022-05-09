@@ -9,7 +9,7 @@ class SearchproductView extends GetView<SearchproductController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search Product'),
+        title: Text('Product'),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -24,31 +24,37 @@ class SearchproductView extends GetView<SearchproductController> {
       ),
       body: Column(
         children: [
-          TextField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(),
-              hintText: 'Search Product',
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(),
+                hintText: 'Search Product',
+              ),
             ),
           ),
           Expanded(
               child: ListView.builder(
                   itemCount: 20,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(3.0),
-                      child: Container(
-                        height: 100,
-                        child: Card(
-                            elevation: 3,
-                            child: ListTile(
-                                onTap: () {
-                                  Get.offNamed('/scan');
-                                },
-                                trailing: Icon(Icons.navigate_next),
-                                subtitle: Text('Satuan'),
-                                title: Text('Product Name ${index + 1}'))),
+                    return Card(
+                      child: ListTile(
+                        title: Text(
+                          "Product $index",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        subtitle: Text("Satuan $index"),
+                        trailing: Icon(Icons.navigate_next),
                       ),
+                      elevation: 4,
+                      shadowColor: Colors.purple,
+                      margin: EdgeInsets.all(10),
+                      shape: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          )),
                     );
                   }))
         ],
