@@ -1,0 +1,28 @@
+name: stock_op_name
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  dio: ^4.0.6
+  fluttertoast: ^8.0.2
+  get: 4.6.1
+  lottie: ^1.2.2
+  shared_preferences: ^2.0.13
+  flutter_barcode_scanner: 2.0.0
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints: ^1.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  assets: 
+    - assets/
+  uses-material-design: true
+
