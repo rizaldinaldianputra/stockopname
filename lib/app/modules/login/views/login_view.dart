@@ -227,29 +227,31 @@ class _LoginViewState extends State<LoginView> {
     String username = _usernameController.text;
     String password = _passwordController.text;
 
-    int? response = await _authService.authenticate(
-        API_URL + '/authenticate', username, password);
+    int? response =
+        await _authService.authenticate(API_URL + 'auth', username, password);
 
     if (response == 200) {
       SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
       diopackage.Response returnUser = await _userService.getinfo();
-      if (returnUser.statusCode == 200) {
-        sharedPreferences.setString("user", json.encode(returnUser.data));
+      if (returnUser.data['success'] == true) {
+        sharedPreferences.setString(
+            "user", json.encode(returnUser.data['data']));
         Map<String, dynamic> userJson =
             jsonDecode(sharedPreferences.getString("user") ?? '{}');
         var user = User.fromJson(userJson);
         Get.offNamed('/home');
-      } else
+      } else {
         Fluttertoast.showToast(
             msg: 'Get Info Error',
             toastLength: Toast.LENGTH_SHORT,
             backgroundColor: Colors.red,
             textColor: Colors.white,
             fontSize: 13);
+      }
     } else {
       Fluttertoast.showToast(
-          msg: 'Login Error',
+          msg: 'Login Error ' + response.toString(),
           toastLength: Toast.LENGTH_SHORT,
           backgroundColor: Colors.red,
           textColor: Colors.white,

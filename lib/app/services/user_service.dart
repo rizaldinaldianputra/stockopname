@@ -6,7 +6,7 @@ import 'CommonService.dart';
 class UserService {
   late CommonService api;
   late Response response;
-  String url = API_URL + '/user';
+  String url = API_URL;
   String connErr = 'Please check your internet connection and try again';
 
   UserService(context) {
@@ -14,6 +14,6 @@ class UserService {
   }
 
   Future<Response> getinfo() async {
-    return response = await api.getHTTP(url + '/info');
+    return response = await api.getHTTP(url + 'info');
   }
 }

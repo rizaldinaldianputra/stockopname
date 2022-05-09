@@ -65,7 +65,7 @@ class CommonService {
         String? token = '';
         token = sharedPreferences.getString("token");
         if (token != null)
-          request.headers.addAll({"Authorization": "Bearer: $token"});
+          request.headers.addAll({"Authorization": "Bearer $token"});
         return requestInterceptor.next(request);
       },
       onResponse: (response, handler) async {

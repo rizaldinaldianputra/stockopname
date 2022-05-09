@@ -10,6 +10,7 @@ abstract class Routes {
   static const SCAN = _Paths.SCAN;
   static const SPLASH = _Paths.SPLASH;
   static const SEARCHPRODUCT = _Paths.SEARCHPRODUCT;
+  static const PRODUCT = _Paths.PRODUCT;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const SCAN = '/scan';
   static const SPLASH = '/splash';
   static const SEARCHPRODUCT = '/searchproduct';
+  static const PRODUCT = '/product';
 }

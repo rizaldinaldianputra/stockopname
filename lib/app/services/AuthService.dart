@@ -1,11 +1,14 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'CommonService.dart';
 
 class AuthService {
   late CommonService api;
-  String url = '/authenticate';
+  String url = '/auth';
   String connErr = 'Please check your internet connection and try again';
 
   AuthService(context) {
@@ -18,11 +21,14 @@ class AuthService {
     attributeMap["password"] = password;
 
     Response response = await api.postHTTP(url, attributeMap);
-
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
     //  jsonResponse = json.decode(response.data);
-    sharedPreferences.setString("token", response.data['token']);
-    return Future.value(response.statusCode);
+    if (response.data['success'] == true) {
+      sharedPreferences.setString("token", response.data['token']);
+      return Future.value(response.statusCode);
+    } else {
+      return 401;
+    }
   }
 }
